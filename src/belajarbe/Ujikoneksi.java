@@ -6,10 +6,6 @@ package belajarbe;
 
 import java.sql.Connection;
 
-/**
- *
- * @author hanif
- */
 public class Ujikoneksi {
     public static void main(String[] args){
         Connection c = Koneksi.sambung_ke_db();
