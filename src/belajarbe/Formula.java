@@ -1,10 +1,14 @@
-/*
+    /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package belajarbe;
 
 import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
+
 
 /**
  *
@@ -33,11 +37,11 @@ public class Formula extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        NamaBooking = new javax.swing.JTextField();
+        txtname = new javax.swing.JTextField();
         PilihLapangan = new javax.swing.JComboBox<>();
-        Waktubooking = new javax.swing.JComboBox<>();
-        Hargasewa = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        txtwaktu = new javax.swing.JComboBox<>();
+        txthargasewa = new javax.swing.JTextField();
+        txttanggal = new javax.swing.JTextField();
         btnbooking = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -53,31 +57,31 @@ public class Formula extends javax.swing.JFrame {
 
         jLabel5.setText("HARGA");
 
-        NamaBooking.addActionListener(new java.awt.event.ActionListener() {
+        txtname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NamaBookingActionPerformed(evt);
+                txtnameActionPerformed(evt);
             }
         });
 
         PilihLapangan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lapangan 1", "Lapangan 2" }));
 
-        Waktubooking.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "06:00-07:00", "07:00-08:00", "08:00-09:00", "09:00-10:00", "10:00-11:00", "11:00-12:00", "12:00-13:00", "13:00-14:00", "14:00-15:00", "15:00-16:00", "16:00-17:00", "17:00-18:00", "18:00-19:00", "19:00-20:00", "20:00-21:00", "21:00-22:00", "22:00-23:00", "23:00-24:00" }));
-        Waktubooking.addActionListener(new java.awt.event.ActionListener() {
+        txtwaktu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "06:00-07:00", "07:00-08:00", "08:00-09:00", "09:00-10:00", "10:00-11:00", "11:00-12:00", "12:00-13:00", "13:00-14:00", "14:00-15:00", "15:00-16:00", "16:00-17:00", "17:00-18:00", "18:00-19:00", "19:00-20:00", "20:00-21:00", "21:00-22:00", "22:00-23:00", "23:00-24:00" }));
+        txtwaktu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                WaktubookingActionPerformed(evt);
+                txtwaktuActionPerformed(evt);
             }
         });
 
-        Hargasewa.addActionListener(new java.awt.event.ActionListener() {
+        txthargasewa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HargasewaActionPerformed(evt);
+                txthargasewaActionPerformed(evt);
             }
         });
 
-        jTextField1.setText("dd-MM-yyyy");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txttanggal.setText("dd-MM-yyyy");
+        txttanggal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txttanggalActionPerformed(evt);
             }
         });
 
@@ -112,12 +116,12 @@ public class Formula extends javax.swing.JFrame {
                                 .addGap(113, 113, 113)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
+                                        .addComponent(txttanggal, javax.swing.GroupLayout.DEFAULT_SIZE, 87, Short.MAX_VALUE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Waktubooking, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(NamaBooking)
+                                        .addComponent(txtwaktu, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtname)
                                     .addComponent(PilihLapangan, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(Hargasewa, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(txthargasewa, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(90, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -128,7 +132,7 @@ public class Formula extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(NamaBooking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -137,12 +141,12 @@ public class Formula extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel4)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Waktubooking, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txttanggal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtwaktu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(Hargasewa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txthargasewa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnbooking)
                 .addContainerGap(67, Short.MAX_VALUE))
@@ -151,33 +155,56 @@ public class Formula extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NamaBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NamaBookingActionPerformed
+    private void txtnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NamaBookingActionPerformed
+    }//GEN-LAST:event_txtnameActionPerformed
 
-    private void WaktubookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WaktubookingActionPerformed
+    private void txtwaktuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtwaktuActionPerformed
         // TODO add your handling code here:
         int harga = 0;
-        if (Waktubooking.getSelectedIndex()<=7) {
+        if (txtwaktu.getSelectedIndex()<=7) {
             harga = 50000;
-        }else if (Waktubooking.getSelectedIndex()>= 8 && Waktubooking.getSelectedIndex() <= 11) {
+        }else if (txtwaktu.getSelectedIndex()>= 8 && txtwaktu.getSelectedIndex() <= 11) {
             harga =60000;
-        }else if (Waktubooking.getSelectedIndex()>=12) {
+        }else if (txtwaktu.getSelectedIndex()>=12) {
             harga = 70000;
         }
-        Hargasewa.setText(harga + "");
-    }//GEN-LAST:event_WaktubookingActionPerformed
+        txthargasewa.setText(harga + "");
+    }//GEN-LAST:event_txtwaktuActionPerformed
 
-    private void HargasewaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HargasewaActionPerformed
+    private void txthargasewaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txthargasewaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_HargasewaActionPerformed
+    }//GEN-LAST:event_txthargasewaActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txttanggalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttanggalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txttanggalActionPerformed
 
     private void btnbookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbookingActionPerformed
         // TODO add your handling code here:
+        try {
+            Connection m = Koneksi.sambung_ke_db();
+            String insertQuery = "INSERT INTO lapangan1 (Nama, Tanggal, Waktu, Harga) VALUES (?, ?, ?, ?)";
+            PreparedStatement preparedStatement = m.prepareStatement(insertQuery);
+            
+            preparedStatement.setString(1, txtname.getText());
+            preparedStatement.setString(2, txttanggal.getText());
+            preparedStatement.setString(3, txtwaktu.getSelectedItem().toString());
+            preparedStatement.setString(4, txthargasewa.getText());
+            
+            int rowsAffected = preparedStatement.executeUpdate();
+        
+            if (rowsAffected > 0) {
+                JOptionPane.showMessageDialog(this, "Booking successful!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Booking failed.");
+            }
+            
+            m.close();
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+
+        }
     }//GEN-LAST:event_btnbookingActionPerformed
 
     /**
@@ -216,16 +243,16 @@ public class Formula extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Hargasewa;
-    private javax.swing.JTextField NamaBooking;
     private javax.swing.JComboBox<String> PilihLapangan;
-    private javax.swing.JComboBox<String> Waktubooking;
     private javax.swing.JButton btnbooking;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txthargasewa;
+    private javax.swing.JTextField txtname;
+    private javax.swing.JTextField txttanggal;
+    private javax.swing.JComboBox<String> txtwaktu;
     // End of variables declaration//GEN-END:variables
 }

@@ -43,13 +43,13 @@
                               <EmptySpace min="-2" pref="113" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" alignment="1" attributes="0">
-                                      <Component id="jTextField1" pref="87" max="32767" attributes="0"/>
+                                      <Component id="txttanggal" pref="87" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="Waktubooking" min="-2" pref="97" max="-2" attributes="0"/>
+                                      <Component id="txtwaktu" min="-2" pref="97" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="NamaBooking" max="32767" attributes="0"/>
+                                  <Component id="txtname" max="32767" attributes="0"/>
                                   <Component id="PilihLapangan" max="32767" attributes="0"/>
-                                  <Component id="Hargasewa" alignment="0" min="-2" pref="96" max="-2" attributes="0"/>
+                                  <Component id="txthargasewa" alignment="0" min="-2" pref="96" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -67,7 +67,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="NamaBooking" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtname" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -78,14 +78,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txttanggal" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="Waktubooking" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtwaktu" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Hargasewa" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txthargasewa" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="btnbooking" min="-2" max="-2" attributes="0"/>
@@ -123,9 +123,9 @@
         <Property name="text" type="java.lang.String" value="HARGA"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="NamaBooking">
+    <Component class="javax.swing.JTextField" name="txtname">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NamaBookingActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtnameActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="PilihLapangan">
@@ -141,7 +141,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JComboBox" name="Waktubooking">
+    <Component class="javax.swing.JComboBox" name="txtwaktu">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="18">
@@ -167,23 +167,23 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="WaktubookingActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtwaktuActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JTextField" name="Hargasewa">
+    <Component class="javax.swing.JTextField" name="txthargasewa">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="HargasewaActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txthargasewaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JTextField" name="txttanggal">
       <Properties>
         <Property name="text" type="java.lang.String" value="dd-MM-yyyy"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txttanggalActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnbooking">
